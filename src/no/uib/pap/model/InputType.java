@@ -4,14 +4,15 @@ package no.uib.pap.model;
  * Specifies the possible input types for PathwayMatcher as an enum
  */
 public enum InputType {
-    PEPTIDELIST,
-    PEPTIDELISTANDMODSITES,
-    UNIPROTLIST,
-    PROTEOFORMS,
-    VCF,
-    RSIDLIST,
-    ENSEMBLLIST,
-    GENELIST, 
+	
+    GENES, 				//TODO
+    ENSEMBL,			//TODO
+    UNIPROT,			//TODO
+    PROTEOFORMS,			//TODO
+    PEPTIDES,		//TODO
+    MODIFIEDPEPTIDES,//TODO
+    VCF,	//TODO
+    RSIDS,	//TODO
     UNKNOWN;
 	
 	public Iterable<InputType> getValues() {

@@ -1,10 +1,15 @@
 package no.uib.pap.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
-
-import java.io.Serializable;
-import java.util.*;
 
 /**
  * @author Luis Francisco Hernández Sánchez

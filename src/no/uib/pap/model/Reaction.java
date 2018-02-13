@@ -1,7 +1,6 @@
 package no.uib.pap.model;
 
 import java.io.Serializable;
-import java.util.Set;
 import java.util.TreeSet;
 
 public class Reaction implements Comparable<Reaction>, Serializable {

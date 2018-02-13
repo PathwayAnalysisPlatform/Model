@@ -1,8 +1,7 @@
 package no.uib.pap.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.net.NetworkInterface;
 import java.text.ParseException;
 
 import org.junit.jupiter.api.Test;
