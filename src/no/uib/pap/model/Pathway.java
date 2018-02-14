@@ -31,7 +31,7 @@ public class Pathway implements Comparable<Pathway>, Serializable {
     private Set<Proteoform> entitiesFound;
     
     private double reactionsRatio;
-    private Set<Reaction> reactionsFound;
+    private Set<String> reactionsFound;
 
     /**
      * Create a new instance of a top level pathway. Sets the topLevelPathway to itself.
@@ -129,25 +129,25 @@ public class Pathway implements Comparable<Pathway>, Serializable {
         this.reactionsRatio = reactionsRatio;
     }
 
-    public Set<Reaction> getReactionsFound() {
+    public Set<String> getReactionsFound() {
         return reactionsFound;
     }
 
     public String getReactionsFoundString() {
         StringBuilder str = new StringBuilder();
         boolean first = true;
-        for (Reaction reaction : reactionsFound) {
+        for (String reaction : reactionsFound) {
             if (!first) {
                 str.append(",");
             }
-            str.append(reaction.getStId());
+            str.append(reaction);
             first = false;
         }
 
         return str.toString();
     }
 
-    public void setReactionsFound(Set<Reaction> reactionsFound) {
+    public void setReactionsFound(Set<String> reactionsFound) {
         this.reactionsFound = reactionsFound;
     }
 
