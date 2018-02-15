@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
+import com.google.common.collect.TreeMultimap;
 
 /**
  * @author Luis Francisco Hernández Sánchez
@@ -19,7 +19,7 @@ public class Proteoform implements Comparable<Proteoform>, Serializable {
 	private String UniProtAcc; // The uniprot accession number including the optional isoform
 	private Long startCoordinate; // The start coordinate of the protein subsequence
 	private Long endCoordinate; // The end coordinate of the protein subsequence
-	private LinkedListMultimap<String, Long> ptms; // The list of post-translational modifications: PSI-MOD type ->
+	private TreeMultimap<String, Long> ptms; // The list of post-translational modifications: PSI-MOD type ->
 													// Sites set
 	private Set<Snp> sourceSnpSet; // The genetic variants that lead to this proteoform
 	// * This structure can not take "null" as a value, then when the coordinates
@@ -30,10 +30,10 @@ public class Proteoform implements Comparable<Proteoform>, Serializable {
 		UniProtAcc = uniProtAcc;
 		startCoordinate = -1L;
 		endCoordinate = -1L;
-		ptms = LinkedListMultimap.create();
+		ptms = TreeMultimap.create();
 	}
 
-	public Proteoform(String uniProtAcc, LinkedListMultimap<String, Long> ptms) {
+	public Proteoform(String uniProtAcc, TreeMultimap<String, Long> ptms) {
 		UniProtAcc = uniProtAcc;
 		startCoordinate = -1L;
 		endCoordinate = -1L;
@@ -108,7 +108,7 @@ public class Proteoform implements Comparable<Proteoform>, Serializable {
 		return interpretCoordinateFromLongToString(this.endCoordinate);
 	}
 
-	public ListMultimap<String, Long> getPtms() {
+	public TreeMultimap<String, Long> getPtms() {
 		return this.ptms;
 	}
 
@@ -124,7 +124,7 @@ public class Proteoform implements Comparable<Proteoform>, Serializable {
 	// return sortedPtms;
 	// }
 
-	public void setPtms(LinkedListMultimap<String, Long> ptms) {
+	public void setPtms(TreeMultimap<String, Long> ptms) {
 		this.ptms = ptms;
 	}
 
@@ -155,21 +155,6 @@ public class Proteoform implements Comparable<Proteoform>, Serializable {
 			coordinate = -1L;
 		}
 		ptms.put(motType, coordinate);
-	}
-
-	public void sortPtms() {
-		List<Map.Entry<String, Long>> sortedPtms = new ArrayList<>(this.ptms.entries());
-		Collections.sort(sortedPtms, (o1, o2) -> {
-			if (o1.getKey() != o2.getKey()) {
-				return o1.getKey().compareTo(o2.getKey());
-			}
-			return (o1.getValue()).compareTo(o2.getValue());
-		});
-		this.ptms.clear();
-		ptms = LinkedListMultimap.create();
-		for (Map.Entry<String, Long> entry : sortedPtms) {
-			this.ptms.put(entry.getKey(), entry.getValue());
-		}
 	}
 
 	@Override
@@ -212,7 +197,7 @@ public class Proteoform implements Comparable<Proteoform>, Serializable {
 	/**
 	 * Compares two proteoforms to decide how to order them.
 	 *
-	 * @param that
+	 * @param that The other proteoform
 	 * @return before = -1, equal = 0, after = 1
 	 */
 	@Override
