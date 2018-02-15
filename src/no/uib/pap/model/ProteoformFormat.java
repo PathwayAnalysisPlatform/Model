@@ -107,8 +107,6 @@ public enum ProteoformFormat {
 				pos++;
 			}
 
-			proteoform.sortPtms();
-
 			return proteoform;
 		}
 
@@ -301,8 +299,6 @@ public enum ProteoformFormat {
 				}
 			}
 
-			proteoform.sortPtms();
-
 			return proteoform;
 		}
 
@@ -476,8 +472,6 @@ public enum ProteoformFormat {
 
 				c = line.charAt(++pos);
 			}
-
-			proteoform.sortPtms();
 
 			return proteoform;
 		}
