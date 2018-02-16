@@ -5,14 +5,14 @@ package no.uib.pap.model;
  */
 public enum InputType {
 	
-    GENES, 				//TODO
-    ENSEMBL,			//TODO
-    UNIPROT,			//TODO
-    PROTEOFORMS,			//TODO
-    PEPTIDES,		//TODO
-    MODIFIEDPEPTIDES,//TODO
-    VCF,	//TODO
-    RSIDS,	//TODO
+    GENES, 				
+    ENSEMBL,			
+    UNIPROT,			
+    PROTEOFORMS,			
+    PEPTIDES,		
+    MODIFIEDPEPTIDES,
+    VCF,	
+    SNPS,	
     UNKNOWN;
 	
 	public Iterable<InputType> getValues() {
