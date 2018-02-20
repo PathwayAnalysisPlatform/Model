@@ -12,10 +12,20 @@ public enum InputType {
     PEPTIDES,		
     MODIFIEDPEPTIDES,
     VCF,	
-    SNPS,	
+    RSIDS,	
+    CHRBPS,
     UNKNOWN;
 	
 	public Iterable<InputType> getValues() {
 		return this.getValues();
+	}
+	
+	public static boolean isValueOf(String value) {
+		for(InputType type : InputType.values()) {
+			if(type.toString().equals(value)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
