@@ -19,6 +19,25 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<!-- Licence -->
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+
+	<!-- Developers -->
+	<developers>
+		<developer>
+			<name>Luis Francisco Hernández Sánchez</name>
+			<id>francisco</id>
+			<email>luis.sanchez AT uib.no</email>
+			<organization>University of Bergen, Norway</organization>
+		</developer>
+	</developers>
+
 	<dependencies>
 	
 		<!-- Guava: Google Core Libraries for Java -->
