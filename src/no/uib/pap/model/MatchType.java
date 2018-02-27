@@ -5,7 +5,7 @@ public enum MatchType {
 
     public static boolean isValueOf(String value) {
         for (MatchType type : MatchType.values()) {
-            if (type.toString().equals(value)) {
+            if (type.toString().equals(value.toUpperCase())) {
                 return true;
             }
         }
