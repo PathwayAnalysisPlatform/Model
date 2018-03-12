@@ -1,5 +1,10 @@
 package no.uib.pap.model;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.SetMultimap;
+import com.google.common.collect.TreeMultimap;
+
 import java.io.Serializable;
 import java.util.TreeSet;
 
@@ -9,11 +14,22 @@ public class Reaction implements Comparable<Reaction>, Serializable {
     private String stId;
     private String displayName;
     private TreeSet<Pathway> pathwaySet;
+    private TreeMultimap<String, Role> participants;
+
+
+    public TreeMultimap<String, Role> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(TreeMultimap<String, Role> participants) {
+        this.participants = participants;
+    }
 
     public Reaction(String stId, String displayName) {
         this.stId = stId;
         this.displayName = displayName;
         this.pathwaySet = new TreeSet<>();
+        participants = TreeMultimap.create();
     }
 
     public String getStId() {
@@ -77,5 +93,9 @@ public class Reaction implements Comparable<Reaction>, Serializable {
         assert this.equals(that) : "Check consistency with equals";
 
         return 0;
+    }
+
+    public void addParticipant(String proteinAccession, Role role){
+        (this).participants.put(proteinAccession, role);
     }
 }
