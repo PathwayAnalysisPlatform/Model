@@ -1,7 +1,8 @@
 package no.uib.pap.model;
 
 public enum MatchType {
-    STRICT, FLEXIBLE, ONE, ONENOTYPES, FLEXIBLENOTYPES;
+
+    STRICT, SUPERSET, ONE, ONENOTYPES, FLEXIBLENOTYPES;
 
     public static boolean isValueOf(String value) {
         for (MatchType type : MatchType.values()) {
