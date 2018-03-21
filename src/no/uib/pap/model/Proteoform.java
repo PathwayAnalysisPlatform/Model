@@ -3,7 +3,6 @@ package no.uib.pap.model;
 import java.io.Serializable;
 import java.util.*;
 
-import com.google.common.collect.TreeMultimap;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -37,6 +36,14 @@ public class Proteoform implements Comparable<Proteoform>, Serializable {
     }
 
     public String getUniProtAcc() {
+        if (UniProtAcc.contains("-")) {
+            return UniProtAcc.substring(0, UniProtAcc.indexOf("-"));
+        } else {
+            return UniProtAcc;
+        }
+    }
+
+    public String getUniProtAccWithIsoform() {
         return UniProtAcc;
     }
 
@@ -134,11 +141,10 @@ public class Proteoform implements Comparable<Proteoform>, Serializable {
 
     @Override
     public String toString() {
-        return this.getUniProtAcc();
+        return this.getUniProtAccWithIsoform();
     }
 
     public String toString(ProteoformFormat format) {
-
         if (format != null) {
             return format.getString(this);
         } else {

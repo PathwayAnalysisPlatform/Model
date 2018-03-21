@@ -6,7 +6,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.google.common.base.CharMatcher;
-import com.google.common.collect.Multimap;
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
@@ -23,7 +22,7 @@ public enum ProteoformFormat {
         @Override
         public String getString(Proteoform proteoform) {
             StringBuilder str = new StringBuilder();
-            str.append(proteoform.getUniProtAcc() + ";");
+            str.append(proteoform.getUniProtAccWithIsoform() + ";");
 
             int cont = 0;
             for (Map.Entry<String, Long> ptm : proteoform.getPtms()) {
@@ -148,7 +147,7 @@ public enum ProteoformFormat {
             StringBuilder str = new StringBuilder();
 
             // Print the protein accession
-            str.append("UniProtKB:" + proteoform.getUniProtAcc());
+            str.append("UniProtKB:" + proteoform.getUniProtAccWithIsoform());
 
             // Print the subsequence range
             Long start = proteoform.getStartCoordinate();
@@ -393,13 +392,16 @@ public enum ProteoformFormat {
 
     },
     NEO4J {
+
+        // Example: """Q15303-2""","[""00048:1046"",""00048:1178"",""00048:1232""]"
+
         @Override
         public String getString(Proteoform proteoform) {
             try {
                 StringBuilder str = new StringBuilder();
                 boolean isFirst = true;
 
-                str.append("\"\"\"" + proteoform.getUniProtAcc() + "\"\"\"");
+                str.append("\"\"\"" + proteoform.getUniProtAccWithIsoform() + "\"\"\"");
                 str.append(",");
                 if (proteoform.getPtms().size() > 0) {
                     str.append("\"");
