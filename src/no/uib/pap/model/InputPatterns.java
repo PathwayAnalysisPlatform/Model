@@ -19,7 +19,7 @@ public class InputPatterns {
 
 	private static final String PEPTIDE = "^[ARNDBCEQZGHILKMFPSTWYV]+$";
 	private static final String PEPTIDE_AND_SITES = "^[ARNDBCEQZGHILKMFPSTWYV]+(,\\d*)?(;\\d*)*$";
-	private static final String PEPTIDE_AND_MOD_SITES = "^[ARNDBCEQZGHILKMFPSTWYV]+(,\\d{5}:\\d*)?(;\\d{5}:\\d*)*?$";
+	private static final String PEPTIDE_AND_MOD_SITES = "^[ARNDBCEQZGHILKMFPSTWYV]+(;((MOD:)?\\d{5}:(\\d{1,11}|[Nn][Uu][Ll][Ll]))?(,(MOD:)?\\d{5}:(\\d{1,11}|[Nn][Uu][Ll][Ll]))*)?$";
 
 	private static final String RSID = "^rs\\d+$";
 	private static final String CHR_BP = "^[1-2]?[0-9]\\s[0-9]{1,11}$";

@@ -64,9 +64,9 @@ public enum ProteoformFormat {
             }
             pos++;
             if (protein.length() == 0) {
-                no.uib.pap.model.Warning.sendWarning(no.uib.pap.model.Warning.INVALID_ROW, i);
-                throw new ParseException(no.uib.pap.model.Warning.INVALID_ROW.getMessage(),
-                        no.uib.pap.model.Warning.INVALID_ROW.getCode());
+                Warning.sendWarning(Warning.INVALID_ROW, i);
+                throw new ParseException(Warning.INVALID_ROW.getMessage(),
+                        Warning.INVALID_ROW.getCode());
             }
             proteoform.setUniProtAcc(protein.toString());
             // Get ptms one by one
@@ -424,7 +424,7 @@ public enum ProteoformFormat {
                 }
                 return str.toString();
             } catch (NullPointerException e) {
-                System.out.println(proteoform.toString(ProteoformFormat.SIMPLE));
+                System.out.println(proteoform.toString(ProteoformFormat.NEO4J));
                 System.out.println(e);
             }
             return null;
@@ -495,7 +495,7 @@ public enum ProteoformFormat {
          * Goes through the line to check if it contains at least a part that could
          * uniquely identify the input to a specific format.
          *
-         * @param input
+         * @param line to check
          * @return
          */
         @Override
