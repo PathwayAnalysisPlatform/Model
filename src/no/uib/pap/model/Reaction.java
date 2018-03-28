@@ -1,36 +1,17 @@
 package no.uib.pap.model;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.SetMultimap;
 import com.google.common.collect.TreeMultimap;
+import sun.reflect.generics.tree.Tree;
 
 import java.io.Serializable;
 import java.util.TreeSet;
 
+/**
+ * Represents chemical reactions or "reaction-like events" as in the Reactome data model.
+ */
 public class Reaction implements Comparable<Reaction>, Serializable {
-	
-	
+
     private String stId;
-    private String displayName;
-    private TreeSet<Pathway> pathwaySet;
-    private TreeMultimap<String, Role> participants;
-
-
-    public TreeMultimap<String, Role> getParticipants() {
-        return participants;
-    }
-
-    public void setParticipants(TreeMultimap<String, Role> participants) {
-        this.participants = participants;
-    }
-
-    public Reaction(String stId, String displayName) {
-        this.stId = stId;
-        this.displayName = displayName;
-        this.pathwaySet = new TreeSet<>();
-        participants = TreeMultimap.create();
-    }
 
     public String getStId() {
         return stId;
@@ -40,6 +21,8 @@ public class Reaction implements Comparable<Reaction>, Serializable {
         this.stId = stId;
     }
 
+    private String displayName;
+
     public String getDisplayName() {
         return displayName;
     }
@@ -48,19 +31,46 @@ public class Reaction implements Comparable<Reaction>, Serializable {
         this.displayName = displayName;
     }
 
-    public TreeSet<Pathway> getPathwaySet() {
-        return pathwaySet;
+    /**
+     * Protein proteinParticipants with their role: input(reactant), output(product), catalyst, regulator
+     * A protein can have multiple roles in the same reaction
+     */
+    private TreeMultimap<String, Role> proteinParticipants;
+
+    public TreeMultimap<String, Role> getProteinParticipants() {
+        return proteinParticipants;
     }
 
-    public void setPathwaySet(TreeSet<Pathway> pathwaySet) {
-        this.pathwaySet = pathwaySet;
+    public void setProteinParticipants(TreeMultimap<String, Role> proteinParticipants) {
+        this.proteinParticipants = proteinParticipants;
+    }
+
+    /**
+     * Proteoform proteinParticipants with their role: input(reactant), output(product), catalyst, regulator
+     * A protein can have multiple roles in the same reaction
+     */
+    private TreeMultimap<Proteoform, Role> proteoformParticipants;
+
+    public TreeMultimap<Proteoform, Role> getProteoformParticipants() {
+        return proteoformParticipants;
+    }
+
+    public void setProteoformParticipants(TreeMultimap<Proteoform, Role> proteoformParticipants) {
+        this.proteoformParticipants = proteoformParticipants;
+    }
+
+    public Reaction(String stId, String displayName) {
+        this.stId = stId;
+        this.displayName = displayName;
+        proteinParticipants = TreeMultimap.create();
+        proteoformParticipants = TreeMultimap.create();
     }
 
     @Override
     public String toString() {
-    	return this.stId + "\t" + this.displayName;
+        return this.stId + "\t" + this.displayName;
     }
-    
+
     public String toString(String separator) {
         return this.stId + separator + this.displayName;
     }
@@ -95,7 +105,11 @@ public class Reaction implements Comparable<Reaction>, Serializable {
         return 0;
     }
 
-    public void addParticipant(String proteinAccession, Role role){
-        (this).participants.put(proteinAccession, role);
+    public void addProteinParticipant(String proteinAccession, Role role) {
+        (this).proteinParticipants.put(proteinAccession, role);
+    }
+
+    public void addProteoformParticipant(Proteoform proteoform, Role role) {
+        (this).proteoformParticipants.put(proteoform, role);
     }
 }
