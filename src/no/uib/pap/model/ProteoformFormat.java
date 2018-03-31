@@ -156,11 +156,11 @@ public enum ProteoformFormat {
                 str.append("," + (start != null ? start : "?") + "-" + (end != null ? end : "?"));
             }
 
-            HashMap<String, List<Long>> reorderedPtms = new HashMap<>();
+            HashMap<String, ArrayList<Long>> reorderedPtms = new HashMap<>();
 
             for (Pair<String, Long> ptm : proteoform.getPtms()) {
                 if (!reorderedPtms.containsKey(ptm.getKey())) {
-                    reorderedPtms.put(ptm.getLeft(), new ArrayList<>());
+                    reorderedPtms.put(ptm.getLeft(), new ArrayList<Long>());
                 }
                 reorderedPtms.get(ptm.getLeft()).add(ptm.getRight());
             }

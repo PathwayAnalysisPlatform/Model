@@ -1,22 +1,16 @@
 package no.uib.pap.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 
-import org.junit.jupiter.api.Test;
-
-import no.uib.pap.model.Proteoform;
-import no.uib.pap.model.ProteoformFormat;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ProteoformTest {
 
     @Test
     void multiplePTMsWithSameAttributesTest(){
         Proteoform proteoform = new Proteoform("P01308");
-
         proteoform.addPtm("00048", null);
         proteoform.addPtm("00048", null);
         proteoform.addPtm("00048", null);
