@@ -1,6 +1,7 @@
 package no.uib.pap.model;
 
 public enum Role {
+
     CATALYSTACTIVITY("catalyst"),
     INPUT("input"),
     OUTPUT("output"),

@@ -1,10 +1,8 @@
 package no.uib.pap.model;
 
-import com.google.common.collect.TreeMultimap;
-import sun.reflect.generics.tree.Tree;
+import com.google.common.collect.HashMultimap;
 
 import java.io.Serializable;
-import java.util.TreeSet;
 
 /**
  * Represents chemical reactions or "reaction-like events" as in the Reactome data model.
@@ -35,13 +33,13 @@ public class Reaction implements Comparable<Reaction>, Serializable {
      * Protein proteinParticipants with their role: input(reactant), output(product), catalyst, regulator
      * A protein can have multiple roles in the same reaction
      */
-    private TreeMultimap<String, Role> proteinParticipants;
+    private HashMultimap<String, Role> proteinParticipants;
 
-    public TreeMultimap<String, Role> getProteinParticipants() {
+    public HashMultimap<String, Role> getProteinParticipants() {
         return proteinParticipants;
     }
 
-    public void setProteinParticipants(TreeMultimap<String, Role> proteinParticipants) {
+    public void setProteinParticipants(HashMultimap<String, Role> proteinParticipants) {
         this.proteinParticipants = proteinParticipants;
     }
 
@@ -49,21 +47,21 @@ public class Reaction implements Comparable<Reaction>, Serializable {
      * Proteoform proteinParticipants with their role: input(reactant), output(product), catalyst, regulator
      * A protein can have multiple roles in the same reaction
      */
-    private TreeMultimap<Proteoform, Role> proteoformParticipants;
+    private HashMultimap<Proteoform, Role> proteoformParticipants;
 
-    public TreeMultimap<Proteoform, Role> getProteoformParticipants() {
+    public HashMultimap<Proteoform, Role> getProteoformParticipants() {
         return proteoformParticipants;
     }
 
-    public void setProteoformParticipants(TreeMultimap<Proteoform, Role> proteoformParticipants) {
+    public void setProteoformParticipants(HashMultimap<Proteoform, Role> proteoformParticipants) {
         this.proteoformParticipants = proteoformParticipants;
     }
 
     public Reaction(String stId, String displayName) {
         this.stId = stId;
         this.displayName = displayName;
-        proteinParticipants = TreeMultimap.create();
-        proteoformParticipants = TreeMultimap.create();
+        proteinParticipants = HashMultimap.create();
+        proteoformParticipants = HashMultimap.create();
     }
 
     @Override
@@ -105,11 +103,11 @@ public class Reaction implements Comparable<Reaction>, Serializable {
         return 0;
     }
 
-    public void addProteinParticipant(String proteinAccession, Role role) {
-        (this).proteinParticipants.put(proteinAccession, role);
+    public void addParticipant(String proteinAccession, Role role) {
+        this.proteinParticipants.put(proteinAccession, role);
     }
 
-    public void addProteoformParticipant(Proteoform proteoform, Role role) {
-        (this).proteoformParticipants.put(proteoform, role);
+    public void addParticipant(Proteoform proteoform, Role role) {
+        this.proteoformParticipants.put(proteoform, role);
     }
 }

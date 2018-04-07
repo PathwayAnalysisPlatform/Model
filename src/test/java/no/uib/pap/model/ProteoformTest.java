@@ -1,5 +1,7 @@
 package no.uib.pap.model;
 
+import no.uib.pap.model.Proteoform;
+import no.uib.pap.model.ProteoformFormat;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;

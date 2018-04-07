@@ -3,11 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.uib.pap</groupId>
 	<artifactId>Model</artifactId>
-	<version>1.7</version>
+	<version>1.7.1</version>
 	<name>Model</name>
 	<description>The common objects represented in the Pathway Analysis Platform</description>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -47,14 +48,7 @@
 	</developers>
 
 	<dependencies>
-	
-		<!-- Guava: Google Core Libraries for Java -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>24.0-jre</version>
-		</dependency>
-		
+
 		<!-- Apache Commons Lang -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -66,5 +60,12 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.0.0</version>
         </dependency>
-    </dependencies>
+
+		<!-- Guava: Google Core Libraries for Java -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>24.1-jre</version>
+		</dependency>
+	</dependencies>
 </project>
