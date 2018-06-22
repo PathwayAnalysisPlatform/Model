@@ -23,7 +23,8 @@ public enum Error {
     INVALID_MATCHING_TYPE(17, "The selected matching type is invalid."),
     ERROR_WITH_OUTPUT_FILE(18, "There was a problem writing to the output file."),
     VEP_DIRECTORY_NOT_FOUND(19, "The directory for the VEP tables was not found."),
-    COULD_NOT_CREATE_SNP_TO_SWISSPROT_FILE(21, "Could not create or write to snp_to_swissprot file.");
+    COULD_NOT_CREATE_SNP_TO_SWISSPROT_FILE(21, "Could not create or write to snp_to_swissprot file."),
+    COULD_NOT_READ_FASTA_FILE(22, "Could not read the fasta file.");
 
     private final int code;
     private final String message;
