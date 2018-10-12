@@ -22,7 +22,7 @@ public class InputPatterns {
 	private static final String PEPTIDE_AND_MOD_SITES = "^[ARNDBCEQZGHILKMFPSTWYV]+(;((MOD:)?\\d{5}:(\\d{1,11}|[Nn][Uu][Ll][Ll]))?(,(MOD:)?\\d{5}:(\\d{1,11}|[Nn][Uu][Ll][Ll]))*)?$";
 
 	private static final String RSID = "^rs\\d+$";
-	private static final String CHR_BP = "^[1-2]?[0-9]\\s[0-9]{1,11}$";
+	private static final String CHR_BP = "^[1-2]?[0-9]\\s[0-9]{1,11}L?";
 	private static final String GENE = "^[-.\\p{Alnum}]*$";
 	private static final String VCF = "^\\d{1,2}\\s+[0-9]{1,11}\\s+(rs[0-9]{1,20}|.|NA)\\s[ACTG].*";
 	
@@ -83,7 +83,7 @@ public class InputPatterns {
 		return m.matches();
 	}
 
-	public static boolean matches_Peptite(String str) {
+	public static boolean matches_Peptide(String str) {
 		Matcher m = PATTERN_PEPTIDE.matcher(str);
 		return m.matches();
 	}

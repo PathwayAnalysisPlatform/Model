@@ -174,7 +174,7 @@ public enum ProteoformFormat {
                         str.append("|");
                     }
                     int S = 0;
-                    for(Long site : reorderedPtms.get(mod)){
+                    for (Long site : reorderedPtms.get(mod)) {
                         if (S != 0) {
                             str.append("/");
                         }
@@ -470,7 +470,7 @@ public enum ProteoformFormat {
                     c = line.charAt(++pos);
                     // Capture the coordinate
                     coordinate = new StringBuilder();
-                    while (c != '\"') {
+                    while (c != ']' && c != ',') {
                         coordinate.append(c);
                         c = line.charAt(++pos);
                     }
@@ -478,8 +478,8 @@ public enum ProteoformFormat {
                     proteoform.addPtm(mod.toString(), (coordinate.toString().toLowerCase().equals("null") ? null
                             : Long.valueOf(coordinate.toString())));
                 }
-
-                c = line.charAt(++pos);
+                if (line.charAt(pos) != ']')
+                    c = line.charAt(++pos);
             }
 
             return proteoform;

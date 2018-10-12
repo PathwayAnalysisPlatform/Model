@@ -30,21 +30,17 @@ public class Reaction implements Comparable<Reaction>, Serializable {
     }
 
     /**
-     * Protein proteinParticipants with their role: input(reactant), output(product), catalyst, regulator
+     * Protein proteinParticipantsWithRole with their role: input(reactant), output(product), catalyst, regulator
      * A protein can have multiple roles in the same reaction
      */
-    private HashMultimap<String, Role> proteinParticipants;
+    private HashMultimap<String, Role> proteinParticipantsWithRole;
 
-    public HashMultimap<String, Role> getProteinParticipants() {
-        return proteinParticipants;
-    }
-
-    public void setProteinParticipants(HashMultimap<String, Role> proteinParticipants) {
-        this.proteinParticipants = proteinParticipants;
+    public HashMultimap<String, Role> getProteinParticipantsWithRole() {
+        return proteinParticipantsWithRole;
     }
 
     /**
-     * Proteoform proteinParticipants with their role: input(reactant), output(product), catalyst, regulator
+     * Proteoform proteinParticipantsWithRole with their role: input(reactant), output(product), catalyst, regulator
      * A protein can have multiple roles in the same reaction
      */
     private HashMultimap<Proteoform, Role> proteoformParticipants;
@@ -53,14 +49,10 @@ public class Reaction implements Comparable<Reaction>, Serializable {
         return proteoformParticipants;
     }
 
-    public void setProteoformParticipants(HashMultimap<Proteoform, Role> proteoformParticipants) {
-        this.proteoformParticipants = proteoformParticipants;
-    }
-
     public Reaction(String stId, String displayName) {
         this.stId = stId;
         this.displayName = displayName;
-        proteinParticipants = HashMultimap.create();
+        proteinParticipantsWithRole = HashMultimap.create();
         proteoformParticipants = HashMultimap.create();
     }
 
@@ -104,7 +96,7 @@ public class Reaction implements Comparable<Reaction>, Serializable {
     }
 
     public void addParticipant(String proteinAccession, Role role) {
-        this.proteinParticipants.put(proteinAccession, role);
+        this.proteinParticipantsWithRole.put(proteinAccession, role);
     }
 
     public void addParticipant(Proteoform proteoform, Role role) {
