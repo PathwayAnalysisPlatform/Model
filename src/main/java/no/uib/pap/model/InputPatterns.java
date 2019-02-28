@@ -9,7 +9,7 @@ public class InputPatterns {
 	 */
 
 	private static final String PROTEIN_ENSEMBL = "^(\\p{Upper}{3,7})?\\d{1,11}$";
-	static final String PROTEIN_UNIPROT = "^([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})([-]\\d{1,2})?$";
+	static final String PROTEIN_UNIPROT = "([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})([-]\\\\d{1,2})?$";
 	static final String PROTEOFORM_SIMPLE = "^([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})([-]\\d{1,2})?(;((MOD:)?\\d{5}:(\\d{1,11}|[Nn][Uu][Ll][Ll]))?(,(MOD:)?\\d{5}:(\\d{1,11}|[Nn][Uu][Ll][Ll]))*)?$";
 
 	private static final String PROTEOFORM_PRO = "^UniProtKB:([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})[-]?\\d?(,(\\d+-\\d+)?(,([A-Z][a-z]{2}-\\d+(\\/[A-Z][a-z]{2}-\\d+)*,MOD:\\d{5}(\\|[A-Z][a-z]{2}-\\d+(\\/[A-Z][a-z]{2}-\\d+)*,MOD:\\d{5})*)?)?)?\\s*";
